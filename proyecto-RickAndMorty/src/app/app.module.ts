@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SearchComponent } from './shared/components/search/search.component';
-import { CharacterComponent } from './components/characters/character/character.component';
+import { CharacterComponent } from './components/pages/characters/character/character.component';
 
 @NgModule({
   declarations: [
