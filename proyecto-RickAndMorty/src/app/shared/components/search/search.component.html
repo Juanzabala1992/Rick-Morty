@@ -1,1 +1,1 @@
-<input type="text" placeholder="Buscar" class="form-control-lg">
+<input #inputFind type="text" placeholder="Buscar" class="form-control-lg" (keyup)="search(inputFind.value)">
