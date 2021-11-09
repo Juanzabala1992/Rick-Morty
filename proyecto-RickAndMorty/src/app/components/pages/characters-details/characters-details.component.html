@@ -1,1 +1,25 @@
-<p>characters-details works!</p>
+ <p>It work's</p>
+<div class="row" *ngIf="characters$ | async as character">
+    <span>Todos los personajes</span>
+    <div class="col-xs-12 col-sm-6 col-md-4 justify-content-center" >
+        <div class="card">
+            <div class="image">
+                <img [src]="character.image" class="card-img-top">
+             </div>
+            <div class="card-inner">
+                <div class="header">   
+                    <h2>{{character.name}}</h2> 
+                    <h4 class="text-muted">{{character.status}}</h4>
+                    <ul>
+                        <ol><small>{{character.species}}</small></ol>
+                        <ol><small>{{character.gender}}</small></ol>
+                        <ol><small>{{character.created | date}}</small> </ol>
+                    </ul>                     
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+<button (click)="goback()" class="btn btn-dark">
+        Volver
+</button>

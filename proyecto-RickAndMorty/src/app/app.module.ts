@@ -6,13 +6,15 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { SearchComponent } from './shared/components/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CharacterhomeModule } from './components/pages/characterhome.module'; 
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SearchComponent,   
+    SearchComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

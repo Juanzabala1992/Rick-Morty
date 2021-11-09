@@ -15,11 +15,10 @@ export class SearchComponent implements OnInit {
 
   search(data:string){
     console.log(data);
-    if(data.length>3){
+    if(data && data.length>3){
       this.router.navigate(['/character-list'],{
-        queryParams:{q:data}
-      });
+        queryParams:{q:data}        
+      } );
     }
   }
-
 }

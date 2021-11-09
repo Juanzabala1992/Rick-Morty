@@ -1,5 +1,4 @@
 export interface character{
-
     id:number,
     name:string,
     status:string,
@@ -8,6 +7,7 @@ export interface character{
     gender:string,
     origin:string,
     location:string,
+    created:string,
     image:string
 }
 
