@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule} from '@angular/router';
 import { CharacterhomeRoutingModule } from './characterhome-routing.module';
 import { CommonModule } from '@angular/common';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
   imports:[
     RouterModule,
     CharacterhomeRoutingModule,
-    CommonModule    
+    CommonModule,
+    InfiniteScrollModule    
   ],
   exports:[
     CharacterComponent,

@@ -1,28 +1,16 @@
 <div class="row">
-    <span>Todos los personajes</span>
-    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters; let i as index">
-        <div class="card">
-            <div class="image">
-                <a [routerLink]="['/character-details', character.id]">
-                 <img [src]="character.image" class="card-img-top">
-                </a>
-            </div>
-            <div class="card-inner">
-                <div class="header">
-                    <a [routerLink]="['/character-deatils', character.id]">
-                    <h2>{{character.name}}</h2>                   
-                    </a>
-                    <h4 class="text-muted">{{character.status}}</h4>
-                    <small class="text-muted">{{character.species}}</small>
-                    <small>{{character.type}}</small>   
-                </div>
-            </div>
-        </div>       
-    </div>
+    <span>Todos los personajes</span>  
+        <section class="col-xs-12 col-sm-6 col-md-4"  >
+        <app-character [character]="character" *ngFor="let character of characters" infinite-scroll (scrolled)="ScrollDown($event)"></app-character>        
+        <button>arriba</button>  
+        </section>
+               
     <div class="col-xs-12 col-sm-6 col-md-4 contaier vacio" *ngIf="characters.length <= 0">
         <span>No se encuentra</span>
     </div>
 </div>
-<button class="btn btn-dark">
-        Volver arriba
-</button>
+ 
+ 
+
+        
+

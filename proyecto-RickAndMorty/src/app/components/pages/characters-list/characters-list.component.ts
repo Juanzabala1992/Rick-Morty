@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { character } from 'src/app/shared/components/interface/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
 import {filter, take} from "rxjs/operators"
+import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+
 
 type ResquesInfo={
   next:string;
@@ -30,11 +32,18 @@ export class CharactersListComponent implements OnInit {
   info: ResquesInfo={
     next:" ",
   };
+  reset:number=0;
+  var:number=0;
+  position:number=4;
   private pageNum=1;
   private query!: string;
-  private hideScrollHeight=200;
-  private showScrollHeight=500;
-  constructor(private charatersvc:CharacterService, private route:ActivatedRoute, private router:Router) { 
+  showButton=false;
+  constructor(
+    @Inject(DOCUMENT) private document:Document, 
+    private charatersvc:CharacterService, 
+    private route:ActivatedRoute, private router:Router
+    
+    ) { 
     this.onUrlChange();
   }
 
@@ -44,7 +53,6 @@ export class CharactersListComponent implements OnInit {
   }
   private getcharacters():void{
     this.route.queryParams.pipe(take(1)).subscribe((params: any)=>{
-        console.log("Params =>",params )
         this.query=params['q'];
         this.getDataFromService();
       });
@@ -54,7 +62,7 @@ export class CharactersListComponent implements OnInit {
     this.router.events.pipe(filter((event)=>event instanceof NavigationEnd)).subscribe(
       ()=>{
         this.characters=[];
-        this.pageNum=1;
+        this.pageNum=1;        
         this.getcharacters();
       }
     )
@@ -65,12 +73,40 @@ export class CharactersListComponent implements OnInit {
     .subscribe((res:any)=>{
       if(res?.results.length){
         const {info, results}=res;
-        this.characters=[...this.characters, ...results];
+        this.characters=[...this.characters, ...results];        
         this.info=info; 
       }else{
         this.characters=[];
       }
   
      })
+  }
+  
+  ScrollDown(event: any):void{      
+      this.var=event.currentScrollPosition/1000;  
+      if(this.var>=this.position){        
+        this.position=this.position+2;
+        this.pageNum++;
+        this.charatersvc.searchCharacters(this.query , this.pageNum)    
+        .pipe(take(1))
+        .subscribe((res:any)=>{
+          if(res?.results.length){
+            const {info, results}=res;
+            this.characters=[...this.characters, ...results];        
+            this.info=info; 
+          }else{
+            this.characters=[];
+          }
+      
+         });
+
+      }
+  }
+  @HostListener('window:scroll')  
+  ScrollUP():void{
+    const yOffSet= window.pageYOffset;
+    const scrollTop=this.document.documentElement.scrollTop;
+    this.showButton=(yOffSet || scrollTop)>500;
+    console.log("Hey");
   }
 }
