@@ -16,7 +16,7 @@ const routes: Routes = [
 loadChildren: () => import('./components/pages/characterhome.module').then(m => m.CharacterhomeModule)}
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
