@@ -1,7 +1,5 @@
- <p>It work's</p>
-<div class="row" *ngIf="characters$ | async as character">
-    <span>Todos los personajes</span>
-    <div class="col-xs-12 col-sm-6 col-md-4 justify-content-center" >
+<div class="row justify-content-center" *ngIf="characters$ | async as character">
+    <div class="col-xs-12 col-sm-6 col-md-4 mt-4 justify-content-center" >
         <div class="card">
             <div class="image">
                 <img [src]="character.image" class="card-img-top">
@@ -20,6 +18,14 @@
         </div>       
     </div>
 </div>
-<button (click)="goback()" class="btn btn-dark">
-        Volver
-</button>
+<div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 col-md-4 mt-4 d-flex justify-content-around" >
+    <button class="btn btn-primary" [routerLink]="['/chapters']">
+        Lista Capitulos
+    </button>
+    
+    <button (click)="goback()" class="btn btn-dark">
+            Volver
+    </button>
+</div>
+</div>

@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import { CharacterhomeRoutingModule } from './characterhome-routing.module';
 import { CommonModule } from '@angular/common';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ChaptersComponent } from './chapters/chapters.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CharactersDetailsComponent,
     CharactersListComponent,
     HomeComponent,
+    ChaptersComponent,
        
   ],
   imports:[
@@ -27,6 +29,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CharacterComponent,
     CharactersDetailsComponent,
     CharactersListComponent,
+    ChaptersComponent,
     HomeComponent
   ]
 })

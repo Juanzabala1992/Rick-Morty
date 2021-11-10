@@ -1,10 +1,7 @@
 <div class="row">
-    <span>Todos los personajes</span>  
-        <section class="col-xs-12 col-sm-6 col-md-4"  >
-        <app-character [character]="character" *ngFor="let character of characters" infinite-scroll (scrolled)="ScrollDown($event)"></app-character>        
-        <button>arriba</button>  
-        </section>
-               
+      <div class="col-xs-12 col-sm-6 col-md-4 mt-3" *ngFor="let character of characters" infinite-scroll (scrolled)="ScrollDown($event)">
+        <app-character [character]="character" ></app-character>
+    </div>                 
     <div class="col-xs-12 col-sm-6 col-md-4 contaier vacio" *ngIf="characters.length <= 0">
         <span>No se encuentra</span>
     </div>

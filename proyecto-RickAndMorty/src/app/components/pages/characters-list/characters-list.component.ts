@@ -102,11 +102,11 @@ export class CharactersListComponent implements OnInit {
 
       }
   }
-  @HostListener('window:scroll')  
+/*   @HostListener('window:scroll')  
   ScrollUP():void{
     const yOffSet= window.pageYOffset;
     const scrollTop=this.document.documentElement.scrollTop;
     this.showButton=(yOffSet || scrollTop)>500;
     console.log("Hey");
-  }
+  } */
 }

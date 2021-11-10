@@ -17,7 +17,6 @@ export class CharactersDetailsComponent implements OnInit {
   constructor(private route:ActivatedRoute, private characterSrv:CharacterService) { }
 
   ngOnInit(): void {
-    console.log('this.character ',this.characters$)
     this.route.params.pipe(take(1)).subscribe((params)=>{
       const id= params['id'];
       this.characters$=this.characterSrv.getDeatils(id);

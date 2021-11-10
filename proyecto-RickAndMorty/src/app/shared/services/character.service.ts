@@ -15,4 +15,23 @@ export class CharacterService {
   getDeatils(id:number){
     return this.http.get<character>(`${environment.baseURLAPI}/${id}`);    
   }
+
+  getUrlListadoPersonajes( url:string){
+    return this.http.get(url);       
+  }
+  getFilterCapitulos( termino:string ){
+    return this.http.get(`https://rickandmortyapi.com/api/character/?name=${ termino }`);
+  }
+
+  //Metodo para filtrar capitulos en el buscador
+
+  getFilterPersonajes( termino:string ){
+    return this.http.get(`https://rickandmortyapi.com/api/episode/?name=${ termino }`);
+  }
+
+   
+  getDataCapitulos(){
+    return this.http.get('https://rickandmortyapi.com/api/episode/');
+  }
+
 }
